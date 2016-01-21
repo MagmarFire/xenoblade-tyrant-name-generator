@@ -1,0 +1,52 @@
+<html ng-app='tyrant'>
+    <head>
+        <script type='text/javascript' src='jquery.min.js'></script>
+        <script type='text/javascript' src='angular.min.js'></script>
+        <script type='text/javascript' src='tyrant.js'></script>
+        <style type='text/css'>
+            html {
+                background-color: #eee;
+                font-family: sans-serif;
+                font-size: 12px;
+                padding: 25px;
+            }
+            
+            .result {
+                font-size: 36px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <h1><i>Xenoblade Chronicles X</i> Tyrant Name Generator</h1>
+            <div class='app' ng-controller='TyrantCtrl as tyrant'>
+                <div class='dashboard'>
+                    <input type='input' placeholder='Name...' ng-model='tyrant.name' />, the
+                    <input type='input' placeholder='Adverb...' ng-show='tyrant.useAdverb && tyrant.useAdjective' ng-model='tyrant.adverb' />
+                    <input type='input' placeholder='Adjective...' ng-show='tyrant.useAdjective' ng-model='tyrant.adjective' />
+                    <input type='input' placeholder='Noun...' ng-show='tyrant.useNoun' ng-model='tyrant.noun' />
+                    <div>
+                        <label>Use Adverb? (must use adjective)</label> <input type='checkbox' checked ng-model='tyrant.useAdverb' />
+                    </div>
+                    <div>
+                        <label>Use Adjective?</label> <input type='checkbox' checked ng-model='tyrant.useAdjective' />
+                    </div>
+                    <div>
+                        <label>Use Noun?</label> <input type='checkbox' checked ng-model='tyrant.useNoun' />
+                    </div>
+                    <input type='button' value='Generate' ng-click='tyrant.generate()' />
+                </div>
+                
+                <div ng-show='tyrant.name.length > 0 ||
+                tyrant.adverb.length > 0 ||
+                tyrant.adjective.length > 0 ||
+                tyrant.noun.length > 0'>
+                    <h2>Generated tyrant name:</h2>
+                    <div class='result'>
+                        <span class='name'>{{tyrant.name}}</span>, the <span class='adverb' ng-show='tyrant.useAdverb && tyrant.useAdjective'>{{tyrant.adverb}}</span> <span class='adjective' ng-show='tyrant.useAdjective'>{{tyrant.adjective}}</span> <span class='noun' ng-show='tyrant.useNoun'>{{tyrant.noun}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -14,7 +14,7 @@
             $.getJSON('https://randomuser.me/api/', function(data) {
                 $scope.$apply(function() {
                     self.calculated = true;
-                    self.name = capitalize(data.results[0].user.name.first);
+                    self.name = capitalize(data.results[0].name.first);
                 })
             });
             
